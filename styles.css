@@ -17,6 +17,23 @@ body {
     text-align: justify;
 }
 
+/* Palermo-specific background (place image at assets/background-palermo.jpg) */
+body.palermo {
+    background-image: url('assets/background-palermo.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+:root {
+    --brand-light: #fef6f2;
+    --brand-primary: #e9ba9b;
+    --brand-accent: #d9a989;
+    --brand-dark: #5a3d2b;
+    --brand-contrast: #ffffff;
+    --muted: #3d3026;
+}
+
 /* === ESTILOS PARA EL HEADER === */
 header {
     position: fixed;
@@ -310,6 +327,11 @@ footer {
     margin-top: auto;
 }
 
+footer > p {
+    margin: 1px 0 0 1px;
+    line-height: 1;
+}
+
 footer a {
     color: #007bff;
     text-decoration: none;
@@ -428,11 +450,11 @@ section {
     .guidelines li {
         padding: 12px;
         margin-bottom: 10px;
-        font-size: 13px;
+        font-size: 12px;
     }
 
     .content > p {
-        font-size: 14px;
+        font-size: 12px;
     }
 
     header.title-modal h1 {
@@ -487,13 +509,13 @@ section {
 
     footer {
         font-size: 12px;
-        margin-block: 5px;
+        margin-block: 0;
         margin-top: auto;
     }
 
     p {
-        font-size: 14px;
         margin-block: 5px;
+        font-size: 14px;
     }
 
     .info-card {
@@ -510,4 +532,397 @@ section {
     .contact-info, .whatsapp-link {
         font-size: 12px;
     }
+}
+
+/* === HEADER SWEETBEES (brand) === */
+.site-header {
+    width: 100%;
+    background: linear-gradient(135deg, #e9ba9b 0%, #d9a989 100%);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1100;
+    display: flex;
+    justify-content: center;
+    padding: 6px 0;
+}
+
+.header-inner {
+    /* Desktop: occupy full width of .site-header up to max-width */
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 16px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    background: rgba(255, 248, 240, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.brand { 
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+.logo { 
+    width: 52px; 
+    height: 52px; 
+    border-radius: 50%; 
+    object-fit: cover; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease;
+}
+.logo:hover {
+    transform: scale(1.05);
+}
+.brand-text { 
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+/* Ensure dropdown menu width matches the toggle button inside .brand */
+.brand .btn-group { position: relative; display: inline-block; }
+.brand .btn-group .dropdown-menu {
+    min-width: 100%; /* at least the width of the button */
+}
+.brand .btn-group .dropdown-menu.dropdown-menu-end { right: 0; left: auto; }
+
+/* Brand-specific button and dropdown styling to match site */
+.brand .btn-secondary {
+    background: var(--brand-dark) !important;
+    color: var(--brand-contrast) !important;
+    border: none !important;
+    padding: 8px 14px;
+    font-weight: 700;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(90,61,43,0.12);
+}
+
+.dropdown-menu {
+    background: var(--brand-contrast);
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    padding: 6px 0;
+    min-width: 10rem; /* sensible default */
+}
+
+.dropdown-item {
+    color: var(--brand-dark);
+    font-weight: 500; /* slightly lighter for readability */
+    padding: 12px 18px; /* larger touch area */
+    font-size: 15px;
+    display: block;
+    border-radius: 8px;
+    transition: background 0.12s ease, color 0.12s ease;
+}
+
+.dropdown-item + .dropdown-item { margin-top: 6px; }
+
+.dropdown-item:hover, .dropdown-item:focus {
+    background: rgba(233,186,155,0.16);
+    color: var(--brand-dark);
+}
+
+/* Links and cards follow brand colors */
+a, a:visited { color: var(--brand-dark); }
+a:hover { color: darken(var(--brand-dark), 10%); }
+
+.info-card a { color: var(--brand-dark); font-weight:600; }
+
+footer a { color: var(--brand-dark); }
+
+/* Social link (Instagram) styling */
+.social-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--brand-dark);
+    text-decoration: none;
+    font-weight: 600;
+}
+.social-link:hover { text-decoration: underline; }
+.social-icon {
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    flex: 0 0 auto;
+    vertical-align: middle;
+    fill: var(--brand-dark);
+}
+
+@media (max-width: 768px) {
+    .social-icon { width: 18px; height: 18px; }
+    .social-link { gap: 6px; font-size: 14px; }
+}
+
+/* Center and align footer links (message + instagram) on all sizes
+   Reduce gap and line-height so the footer is more compact without changing font sizes */
+footer > div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* smaller horizontal gap */
+    flex-wrap: wrap;
+}
+
+/* Remove extra margins and force tight line-height for compact appearance */
+footer > div p, footer > div a, footer > div span, footer > div .social-link {
+    margin: 0;
+    line-height: 1; /* keep text compact vertically without changing font-size */
+}
+
+@media (max-width: 480px) {
+    footer > div { gap: 6px; padding: 4px 8px; }
+    .social-link { font-size: 13px; }
+}
+
+/* Ensure header-inner visual matches brand */
+.header-inner { background: linear-gradient(180deg, rgba(255,248,240,0.98), rgba(255,248,240,0.95)); }
+.brand-text .site-title { 
+    font-family: 'Poppins', Arial, sans-serif; 
+    font-size: 22px; 
+    font-weight: 700; 
+    color: #5a3d2b; 
+    font-style: italic; 
+    line-height: 1;
+    text-align: center;
+}
+.brand-text .site-subtitle { 
+    font-size: 14px; 
+    color: #3d3026; 
+    opacity: 0.95; 
+    margin-top: 4px;
+    text-align: center;
+}
+
+.properties-badge { background: rgba(255,255,255,0.9); color:#5a3d2b; padding:6px 10px; border-radius:999px; font-weight:600; box-shadow:0 1px 4px rgba(0,0,0,0.06); cursor:pointer; margin-right:10px; }
+.menu-toggle { background:transparent; border:none; font-size:20px; color:#5a3d2b; }
+
+.header-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Center the site brand text horizontally across the header on desktop */
+/* Center the site brand text horizontally across the header (desktop) */
+.header-inner { position: relative; }
+.site-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    /* keep layout centered but allow the inner link to receive clicks */
+    pointer-events: none;
+}
+
+/* Make the anchor inside .site-brand interactive even if the container ignores pointer events */
+.site-brand-link {
+    pointer-events: auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: inherit;
+    cursor: pointer;
+}
+
+/* Optional visual affordance for hover on the brand link */
+.site-brand-link:hover .site-title {
+    text-decoration: underline;
+}
+
+/* === Site title (brand) visual styling === */
+.site-brand .site-title {
+    /* Airbnb-like clean brand style (using Rubik) */
+    font-family: 'Rubik', 'Poppins', Arial, sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: var(--brand-dark);
+    background: transparent; /* keep clean */
+    padding: 0; /* no pill */
+    border-radius: 0;
+    box-shadow: none;
+    letter-spacing: 0.2px;
+    display: inline-block;
+    transition: color 0.12s ease, transform 0.12s ease;
+}
+
+.site-brand-link:hover .site-title {
+    color: #3f2f24; /* subtle darken on hover */
+    transform: translateY(-1px);
+}
+
+@media (max-width: 768px) {
+    .site-brand .site-title {
+        font-size: 20px;
+        font-weight: 600;
+    }
+}
+
+/* On small screens center the brand relative to the viewport so the visual
+   center matches the desktop appearance while keeping logo and dropdown at the edges. */
+@media (max-width: 768px) {
+    .site-brand {
+        text-align: center;
+        pointer-events: none;
+    }
+
+    /* give header more horizontal padding to avoid overlap with fixed center */
+    .header-inner {
+        padding-left: 56px; /* space for logo */
+        padding-right: 56px; /* space for dropdown */
+    }
+
+    .logo-container { z-index: 6; }
+    .header-right { z-index: 6; }
+}
+
+/* Ensure dropdown inside header-right matches the toggle width and stays right-aligned */
+.header-right .btn-group { position: relative; display: inline-block; }
+.header-right .btn-group .dropdown-menu { min-width: 100%; } */
+.header-right .btn-group .dropdown-menu.dropdown-menu-end { right: 0; left: auto; }
+
+/* Style dropdown button in header-right to match brand button look */
+.header-right .btn-secondary {
+    background: var(--brand-dark) !important;
+    color: var(--brand-contrast) !important;
+    border: none !important;
+    padding: 8px 14px;
+    font-weight: 700;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(90,61,43,0.12);
+    font-size: 16px;
+}
+
+/* Mobile-specific override: keep same visual style but scoped to small screens
+   so desktop rule remains untouched and mobile can be adjusted independently later */
+@media (max-width: 768px) {
+    .header-right .btn-secondary {
+        background: var(--brand-dark) !important;
+        color: var(--brand-contrast) !important;
+        border: none !important;
+        padding: 8px 10px;
+        font-weight: 700;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(90,61,43,0.12);
+        font-size: 12px;
+    }
+}
+
+/* Center text along the header main axis for brand and dropdown */
+.brand-text, .site-brand { display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+.header-right { justify-content: center; }
+
+@media (max-width: 768px) {
+    .brand-text .site-title { font-size:18px; }
+    .brand-text .site-subtitle { display:none; }
+    .logo { width:40px; height:40px; border-radius:50%; }
+    .header-inner { 
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 12px;
+        width: calc(100% - 32px);
+        margin: 6px auto;
+        background: rgba(255, 248, 240, 0.95);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.6);
+        border-radius: 12px;
+    }
+    /* center brand and header-right when header stacks on mobile */
+    .brand { width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px; }
+    .brand-text { width: auto; }
+    .header-right { align-self: center; display: flex; justify-content: center; }
+}
+
+/* Dropdown styles for brand */
+.brand-dropdown { position: relative; display: inline-block; }
+.brand-toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 6px 8px;
+    color: inherit;
+}
+.brand-toggle .site-title { display:block; font-style:italic; }
+.brand-toggle .site-subtitle { display:block; font-size:12px; opacity:0.95; }
+.brand-toggle .chev { font-size:12px; color: rgba(0,0,0,0.45); }
+.brand-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+    padding: 6px 0;
+    margin-top: 8px;
+    min-width: 160px;
+    z-index: 1200;
+    text-align: center;
+}
+
+/* removed custom inline-pills dropdown styling to use Bootstrap default menu */
+.brand-menu .menu-item {
+    list-style: none;
+    padding: 12px 16px; /* more padding for easier selection */
+    color: #5a3d2b;
+    cursor: pointer;
+    font-weight: 500;
+    border-radius: 6px;
+}
+.brand-menu .menu-item:hover,
+.brand-menu .menu-item:focus { background: rgba(233,186,155,0.08); outline: none; }
+
+@media (max-width: 768px) {
+    .brand-menu { min-width: 140px; left: 50%; transform: translateX(-50%); }
+}
+
+/* Small fallback styles for dropdown behavior when Bootstrap JS/CSS isn't available
+   - Hide dropdown menus by default
+   - Show when `.show` is toggled by JS
+   - `.dropdown-menu-right` aligns the menu to the right edge of the parent */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1200;
+    min-width: 160px;
+    padding: 6px 0;
+    margin: 6px 0 0 0;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+}
+.dropdown-menu, .dropdown-menu li {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+.dropdown-menu li::marker,
+.brand-menu li::marker,
+.brand .btn-group li::marker {
+    content: none;
+}
+.dropdown-menu.show {
+    display: block;
+}
+.dropdown-menu-right {
+    right: 0;
+    left: auto;
 }
