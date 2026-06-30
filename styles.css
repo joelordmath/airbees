@@ -1,28 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600;700&display=swap');
+
 /* === ESTILOS GENERALES === */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Rubik', Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
-    background-image: url('https://raw.githubusercontent.com/Joelordmath/airbees/main/assets/background.JPG');
+    background-image: url('assets/background.JPG');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     color: #484848;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     text-align: justify;
-    text-align: justify;
 }
 
-/* Palermo-specific background (place image at assets/background-palermo.jpg) */
+/* Palermo-specific background */
 body.palermo {
     background-image: url('assets/background-palermo.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
 }
 
 :root {
@@ -76,53 +75,39 @@ header p {
 .container {
     max-width: 800px;
     margin: 0 auto;
-    padding: 20px;
-    background-color: rgba(255, 255, 255, 0.9);
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 28px;
+    background-color: rgba(255, 255, 255, 0.94);
+    border-radius: 16px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
     margin-top: 180px;
+    margin-bottom: 24px;
     text-align: justify;
+}
+
+.welcome p {
+    line-height: 1.7;
+    font-size: 16px;
+    color: var(--muted);
 }
 
 .highlighted {
     text-align: center;
-    font-weight: bold;
-    font-size: 20px;
+    font-weight: 700;
+    font-size: 24px;
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 1.5px;
     display: block;
-}
-
-/* === ESTILOS PARA LAS TARJETAS DE INFORMACIÓN === */
-.info-card {
-    display: block; 
-    width: 100%;
-    margin: 0 0 15px 0;
-    text-align: center;
-    padding: 10px;
-}
-
-.info-card img {
-    width: 30px; 
-    height: 30px;
-    margin-bottom: 10px; 
-}
-
-.info-card a {
-    display: block;
-    font-weight: normal;
-    color: #0066cc;
-    font-size: 14px;
-}
-
-.info-card a:hover {
-    color: #004a99;
+    color: var(--brand-dark);
+    margin-bottom: 12px;
 }
 
 /* Estilos adicionales para el contenedor .info para que los cards se vean alineados */
 .info {
-    display: block;
-    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
 }
 
 .modal-overlay {
@@ -301,18 +286,6 @@ header p {
     font-weight: bold;
 }
 
-/* === ESTILOS PARA HEADER === */
-header.title-modal {
-    margin-bottom: 20px;
-}
-
-header.title-modal h1 {
-    margin: 0;
-    font-size: 24px;
-    color: #333;
-}
-
-
 /* === ESTILOS PARA EL FOOTER === */
 footer {
     position: relative;
@@ -355,28 +328,39 @@ section {
 
 /* === ESTILOS PARA LAS TARJETAS DE INFORMACIÓN === */
 .info-card {
-    display: inline-block;
-    width: 30%;
+    flex: 1 1 150px;
+    max-width: 200px;
     text-align: center;
+    padding: 18px 12px;
+    border-radius: 12px;
+    background: var(--brand-light);
+    box-shadow: 0 2px 8px rgba(90, 61, 43, 0.08);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(90, 61, 43, 0.16);
 }
 
 .info-card img {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
+    margin-bottom: 10px;
 }
 
 .info-card a {
     display: block;
-    font-weight: bold;
-    color: #0066cc;
-}
-
-.info-card a:hover {
-    color: #004a99;
+    font-weight: 600;
+    font-size: 14px;
 }
 
 /* === ESTILOS RESPONSIVOS === */
 @media (max-width: 768px) {
+    body, body.palermo {
+        background-attachment: scroll;
+    }
+
     header h1 {
         font-size: 24px;
     }
@@ -486,27 +470,6 @@ section {
         font-family: 'Arial', sans-serif;
     }
 
-    .title-modal {
-        background-color: #e9ba9b;
-        color: #333;
-        padding: 20px;
-        text-align: center;
-        border-radius: 12px;
-        width: -webkit-fill-available;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        margin-bottom: 20px;
-        position: sticky;
-        top: 0;
-        z-index: 10;
-    }
-    
-    .title-modal h2 {
-        margin: 0;
-        font-size: 14px;
-        font-weight: bold;
-        font-family: 'Arial', sans-serif;
-    }    
-
     footer {
         font-size: 12px;
         margin-block: 0;
@@ -519,9 +482,8 @@ section {
     }
 
     .info-card {
-        width: 100%;
-        margin-bottom: 15px;
-        padding: 0;
+        flex: 1 1 100%;
+        max-width: none;
     }
 
     .link-icon {
@@ -790,7 +752,7 @@ footer > div p, footer > div a, footer > div span, footer > div .social-link {
 
 /* Ensure dropdown inside header-right matches the toggle width and stays right-aligned */
 .header-right .btn-group { position: relative; display: inline-block; }
-.header-right .btn-group .dropdown-menu { min-width: 100%; } */
+.header-right .btn-group .dropdown-menu { min-width: 100%; }
 .header-right .btn-group .dropdown-menu.dropdown-menu-end { right: 0; left: auto; }
 
 /* Style dropdown button in header-right to match brand button look */
