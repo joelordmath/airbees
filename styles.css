@@ -888,3 +888,52 @@ footer > div p, footer > div a, footer > div span, footer > div .social-link {
     right: 0;
     left: auto;
 }
+
+/* === BOTÓN FLOTANTE: CHAT AIRBNB === */
+.floating-chat-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1200;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--brand-dark);
+    color: var(--brand-contrast);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 12px 18px;
+    border-radius: 999px;
+    box-shadow: 0 6px 18px rgba(90, 61, 43, 0.35);
+    transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.floating-chat-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(90, 61, 43, 0.45);
+    color: var(--brand-contrast);
+}
+
+.floating-chat-btn .chat-icon {
+    width: 20px;
+    height: 20px;
+    fill: var(--brand-contrast);
+    flex-shrink: 0;
+}
+
+.floating-chat-btn .chat-label {
+    white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+    .floating-chat-btn {
+        right: 14px;
+        bottom: 14px;
+        padding: 12px;
+        border-radius: 50%;
+    }
+    .floating-chat-btn .chat-label {
+        display: none;
+    }
+}
